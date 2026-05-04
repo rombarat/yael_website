@@ -1,0 +1,38 @@
+---
+const photos = [
+  "/images/IMG_2885.jpg",
+  "/images/IMG_2960.jpg",
+  "/images/IMG_3182.jpg",
+  "/images/IMG_4229.jpg",
+  "/images/IMG_4498.jpg",
+  "/images/IMG_4702.jpg",
+  "/images/IMG_6169.jpg",
+  "/images/IMG_6891.jpg",
+  "/images/IMG_7946.jpg",
+];
+// Asymmetric heights for editorial feel
+const heights = ["aspect-[3/4]", "aspect-[4/5]", "aspect-square", "aspect-[4/5]", "aspect-[3/4]", "aspect-square", "aspect-[4/5]", "aspect-[3/4]", "aspect-[4/5]"];
+---
+<section class="py-24 sm:py-36 px-6 sm:px-10 lg:px-14 bg-[var(--color-bg)]">
+  <div class="max-w-7xl mx-auto">
+    <header class="reveal mb-14 sm:mb-20 flex items-end justify-between gap-6 flex-wrap">
+      <div>
+        <div class="ltr text-[11px] tracking-[0.3em] uppercase text-[var(--color-coral)] font-medium mb-3">— Gallery</div>
+        <h2 class="font-display font-bold text-4xl sm:text-6xl lg:text-7xl leading-[1] text-[var(--color-ink)]">
+          ככה זה <em class="not-italic text-[var(--color-coral)]">נראה</em>.
+        </h2>
+        <p class="mt-4 text-[var(--color-muted)] max-w-md">רגעים מהאירועים, המסיבות והמפגשים שלנו.</p>
+      </div>
+      <div class="font-poster text-[var(--color-coral)] text-5xl sm:text-7xl leading-none opacity-90">04</div>
+    </header>
+
+    <!-- Masonry-ish using CSS columns -->
+    <div class="columns-2 md:columns-3 gap-4 sm:gap-6 [column-fill:_balance]">
+      {photos.map((src, i) => (
+        <div class={`reveal img-hover mb-4 sm:mb-6 break-inside-avoid rounded-sm overflow-hidden ${heights[i % heights.length]}`}>
+          <img src={src} alt="" loading="lazy" class="w-full h-full object-cover" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

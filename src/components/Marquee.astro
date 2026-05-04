@@ -1,0 +1,17 @@
+---
+const items = ["TLV YOUNG", "קהילה", "MEET. MOVE. CONNECT.", "תל אביב", "★", "צעירים. ביחד.", "EST. 2024"];
+---
+<section class="bg-[var(--color-coral)] text-[var(--color-soft)] py-5 overflow-hidden border-y-2 border-[var(--color-ink)]">
+  <div class="flex whitespace-nowrap marquee-track">
+    {[...Array(2)].map(() => (
+      <div class="flex shrink-0 items-center gap-10 sm:gap-16 px-5 sm:px-8">
+        {items.map((item) => (
+          <span class="font-display text-xl sm:text-3xl font-medium tracking-wide flex items-center gap-10 sm:gap-16">
+            {item}
+            <span class="text-[var(--color-soft)]/70 font-poster">·</span>
+          </span>
+        ))}
+      </div>
+    ))}
+  </div>
+</section>
