@@ -1,27 +1,37 @@
 ---
+import Stickers from "./Stickers.astro";
 ---
 <section class="py-24 sm:py-36 px-6 sm:px-10 lg:px-14 bg-[var(--color-soft)] relative overflow-hidden">
-  <div class="max-w-7xl mx-auto grid grid-cols-12 gap-6 sm:gap-10 items-center">
-    <!-- Text side (visual left in RTL = first in DOM) -->
-    <div class="col-span-12 lg:col-span-4 reveal order-2 lg:order-1">
-      <div class="ltr text-[11px] tracking-[0.3em] uppercase text-[var(--color-coral)] font-medium mb-4">— A Personal Invite</div>
-      <div class="font-poster text-[var(--color-coral)] text-5xl sm:text-7xl leading-none mb-6">05</div>
-      <h2 class="font-display font-bold text-4xl sm:text-5xl text-[var(--color-ink)] leading-[1.05]">
-        שמעו<br/>מ<em class="not-italic text-[var(--color-coral)]">יעל</em>.
+  <!-- Background washes -->
+  <div class="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-[var(--color-sunshine)]/25 blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-0 -right-32 w-[400px] h-[400px] rounded-full bg-[var(--color-pink)]/50 blur-3xl pointer-events-none"></div>
+
+  <div class="hidden md:block absolute top-16 right-[8%]" data-sticker="-0.06">
+    <Stickers variant="star" class="w-14 h-14 text-[var(--color-coral)]" />
+  </div>
+
+  <div class="max-w-7xl mx-auto grid grid-cols-12 gap-6 sm:gap-10 items-center relative z-10">
+    <!-- Text -->
+    <div class="col-span-12 lg:col-span-4 reveal order-2 lg:order-1 text-center lg:text-right">
+      <span class="ltr inline-block bg-[var(--color-ocean)] text-[var(--color-soft)] text-xs tracking-[0.3em] uppercase font-bold px-4 py-2 rounded-full mb-6">
+        ★ A Personal Invite
+      </span>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-[var(--color-ink)] leading-[1.05]">
+        תשמעו<br/>מ<span class="text-[var(--color-coral)]">יעל</span>.
       </h2>
-      <p class="mt-6 text-[var(--color-muted)] text-lg leading-relaxed">
-        תכניסו אוזניות. יעל מספרת על הקהילה,
-        על האנשים, ולמה שווה להיכנס פנימה.
+      <p class="mt-6 text-[var(--color-muted)] text-base sm:text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
+        יעל מספרת קצת על החבר'ה, על הווייב, ולמה ממש שווה לכם
+        לקפוץ לאירוע הבא שלנו. שימו אוזניות.
       </p>
-      <div class="mt-8 flex items-center gap-3 text-[var(--color-ink)]">
-        <span class="text-2xl">↓</span>
-        <span class="text-sm tracking-[0.2em] uppercase">אז מוכנים?</span>
+      <div class="mt-7 flex items-center gap-3 justify-center lg:justify-start">
+        <span class="text-3xl text-[var(--color-coral)] animate-bounce">↓</span>
+        <span class="ltr text-sm tracking-[0.2em] uppercase font-bold text-[var(--color-ink)]">Press Play</span>
       </div>
     </div>
 
-    <!-- Video side -->
-    <div class="col-span-12 lg:col-span-8 reveal order-1 lg:order-2">
-      <div class="relative rounded-sm overflow-hidden shadow-2xl bg-[var(--color-ink)]">
+    <!-- Video -->
+    <div class="col-span-12 lg:col-span-8 reveal-scale order-1 lg:order-2">
+      <div class="relative rounded-[32px] overflow-hidden shadow-[0_40px_80px_-20px_rgba(31,20,16,0.4)] bg-[var(--color-ink)]">
         <video
           src="/images/video.mp4"
           controls
@@ -32,8 +42,7 @@
         >
           הדפדפן שלך לא תומך בנגן וידאו.
         </video>
-        <!-- Editorial frame caption -->
-        <div class="absolute top-3 right-3 ltr text-[10px] tracking-[0.3em] uppercase text-[var(--color-soft)]/85 bg-[var(--color-ink)]/40 backdrop-blur px-3 py-1.5 rounded-full">
+        <div class="absolute top-4 right-4 ltr text-[10px] tracking-[0.3em] uppercase font-bold text-[var(--color-ink)] bg-[var(--color-sunshine)] px-3 py-1.5 rounded-full">
           ★ Yael · TLV Young
         </div>
       </div>

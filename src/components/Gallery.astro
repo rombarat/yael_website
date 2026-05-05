@@ -1,4 +1,5 @@
 ---
+import Stickers from "./Stickers.astro";
 const photos = [
   "/images/IMG_2885.jpg",
   "/images/IMG_2960.jpg",
@@ -10,26 +11,34 @@ const photos = [
   "/images/IMG_6891.jpg",
   "/images/IMG_7946.jpg",
 ];
-// Asymmetric heights for editorial feel
 const heights = ["aspect-[3/4]", "aspect-[4/5]", "aspect-square", "aspect-[4/5]", "aspect-[3/4]", "aspect-square", "aspect-[4/5]", "aspect-[3/4]", "aspect-[4/5]"];
+const tilts = [-1, 1, -0.5, 1, -1, 0.5, -1, 1, -0.5];
 ---
-<section class="py-24 sm:py-36 px-6 sm:px-10 lg:px-14 bg-[var(--color-bg)]">
-  <div class="max-w-7xl mx-auto">
-    <header class="reveal mb-14 sm:mb-20 flex items-end justify-between gap-6 flex-wrap">
-      <div>
-        <div class="ltr text-[11px] tracking-[0.3em] uppercase text-[var(--color-coral)] font-medium mb-3">— Gallery</div>
-        <h2 class="font-display font-bold text-4xl sm:text-6xl lg:text-7xl leading-[1] text-[var(--color-ink)]">
-          ככה זה <em class="not-italic text-[var(--color-coral)]">נראה</em>.
-        </h2>
-        <p class="mt-4 text-[var(--color-muted)] max-w-md">רגעים מהאירועים, המסיבות והמפגשים שלנו.</p>
-      </div>
-      <div class="font-poster text-[var(--color-coral)] text-5xl sm:text-7xl leading-none opacity-90">04</div>
+<section class="py-24 sm:py-36 px-6 sm:px-10 lg:px-14 bg-[var(--color-bg)] relative overflow-hidden">
+  <div class="hidden md:block absolute top-20 left-[5%]" data-sticker="0.05">
+    <Stickers variant="sun" class="w-20 h-20 text-[var(--color-sunshine)]" />
+  </div>
+
+  <div class="max-w-7xl mx-auto relative">
+    <header class="reveal mb-14 sm:mb-20 text-center">
+      <span class="ltr inline-block bg-[var(--color-coral)] text-[var(--color-soft)] text-xs tracking-[0.3em] uppercase font-bold px-4 py-2 rounded-full mb-5">
+        ★ Gallery
+      </span>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.1] text-[var(--color-ink)]">
+        פחות דיבורים,<br/>
+        יותר <span class="relative inline-block text-[var(--color-coral)]">חוויות.<svg viewBox="0 0 180 14" class="absolute -bottom-3 left-0 w-full h-4" preserveAspectRatio="none"><path d="M2 9 Q 45 2, 90 8 T 178 7" stroke="#FFC93C" stroke-width="5" fill="none" stroke-linecap="round"/></svg></span>
+      </h2>
+      <p class="mt-6 text-[var(--color-muted)] text-base sm:text-lg max-w-md mx-auto">
+        קצת תמונות מהטירוף של התקופה האחרונה.
+      </p>
     </header>
 
-    <!-- Masonry-ish using CSS columns -->
     <div class="columns-2 md:columns-3 gap-4 sm:gap-6 [column-fill:_balance]">
       {photos.map((src, i) => (
-        <div class={`reveal img-hover mb-4 sm:mb-6 break-inside-avoid rounded-sm overflow-hidden ${heights[i % heights.length]}`}>
+        <div
+          class={`reveal-scale img-card mb-4 sm:mb-6 break-inside-avoid rounded-3xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(31,20,16,0.2)] ${heights[i % heights.length]}`}
+          style={`transform: rotate(${tilts[i]}deg);`}
+        >
           <img src={src} alt="" loading="lazy" class="w-full h-full object-cover" />
         </div>
       ))}

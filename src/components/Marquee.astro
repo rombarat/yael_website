@@ -1,14 +1,15 @@
 ---
-const items = ["TLV YOUNG", "קהילה", "MEET. MOVE. CONNECT.", "תל אביב", "★", "צעירים. ביחד.", "EST. 2024"];
+import Stickers from "./Stickers.astro";
+const items = ["TLV YOUNG", "תל אביב", "צעירים. ביחד.", "MEET. MOVE. CONNECT."];
 ---
-<section class="bg-[var(--color-coral)] text-[var(--color-soft)] py-5 overflow-hidden border-y-2 border-[var(--color-ink)]">
+<section class="bg-[var(--color-coral)] text-[var(--color-soft)] py-6 overflow-hidden border-y-4 border-[var(--color-ink)] relative">
   <div class="flex whitespace-nowrap marquee-track">
     {[...Array(2)].map(() => (
-      <div class="flex shrink-0 items-center gap-10 sm:gap-16 px-5 sm:px-8">
+      <div class="flex shrink-0 items-center gap-8 sm:gap-14 px-5 sm:px-8">
         {items.map((item) => (
-          <span class="font-display text-xl sm:text-3xl font-medium tracking-wide flex items-center gap-10 sm:gap-16">
+          <span class="font-display text-2xl sm:text-4xl flex items-center gap-8 sm:gap-14 shrink-0">
             {item}
-            <span class="text-[var(--color-soft)]/70 font-poster">·</span>
+            <Stickers variant="star" class="w-5 h-5 sm:w-7 sm:h-7 inline-block text-[var(--color-sunshine)] shrink-0" />
           </span>
         ))}
       </div>

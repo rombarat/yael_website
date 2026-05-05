@@ -1,43 +1,55 @@
 ---
+import Stickers from "./Stickers.astro";
 const wa = "https://wa.me/972549899305?text=" + encodeURIComponent("היי, ראיתי את האתר ואני רוצה להצטרף ל-TLV Young");
+// תמונת רקע: הלקוחה תחליף ידנית כאן
+const heroImg = "/images/IMG_0135.jpg";
 ---
 <section class="relative min-h-screen w-full overflow-hidden bg-[var(--color-ink)]">
-  <!-- BG image -->
-  <img
-    src="/images/IMG_0135.jpg"
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover opacity-65"
-    loading="eager"
-    fetchpriority="high"
-  />
-  <!-- Gradient wash -->
-  <div class="absolute inset-0 bg-gradient-to-b from-[#1A1614]/30 via-transparent to-[#1A1614]/85"></div>
-  <div class="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#1A1614]/40"></div>
+  <!-- BG image with parallax -->
+  <div class="absolute inset-0 parallax-target" data-parallax="0.25">
+    <img
+      src={heroImg}
+      alt=""
+      class="absolute inset-0 w-full h-[120%] object-cover opacity-80"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+
+  <!-- Color washes -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-coral)]/20 via-transparent to-[var(--color-ink)]/85"></div>
+  <div class="absolute inset-0 bg-gradient-to-tr from-[var(--color-ocean)]/30 via-transparent to-[var(--color-sunshine)]/15"></div>
+
+  <!-- Floating stickers -->
+  <Stickers variant="sun" class="sticker w-20 h-20 sm:w-28 sm:h-28 top-[12%] left-[6%] text-[var(--color-sunshine)] opacity-90" />
+  <Stickers variant="star" class="sticker w-14 h-14 sm:w-20 sm:h-20 top-[22%] right-[8%] text-[var(--color-coral)] opacity-95" />
+  <Stickers variant="squiggle" class="sticker w-32 h-10 sm:w-44 sm:h-14 bottom-[18%] left-[10%] text-[var(--color-sunshine)]" />
+  <div class="sticker top-[60%] right-[15%]" data-sticker="0.05">
+    <Stickers variant="spark" class="w-12 h-12 sm:w-16 sm:h-16 text-[var(--color-soft)] opacity-80" />
+  </div>
 
   <!-- Content -->
   <div class="relative z-10 min-h-screen flex flex-col justify-between p-6 sm:p-10 lg:p-14">
     <!-- Top bar -->
     <header class="flex items-start justify-between text-[var(--color-soft)]">
-      <div class="ltr text-[11px] sm:text-xs tracking-[0.3em] uppercase font-medium opacity-90">
-        TLV YOUNG · EST.
+      <div class="ltr inline-flex items-center gap-2 bg-[var(--color-soft)]/10 backdrop-blur px-4 py-2 rounded-full text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold">
+        <span class="w-2 h-2 rounded-full bg-[var(--color-coral)] animate-pulse"></span>
+        TLV YOUNG
       </div>
-      <div class="ltr text-[11px] sm:text-xs tracking-[0.3em] uppercase opacity-70">
+      <div class="ltr text-[10px] sm:text-xs tracking-[0.3em] uppercase opacity-70 hidden sm:block">
         Tel Aviv ·  Israel
       </div>
     </header>
 
-    <!-- Headline block -->
+    <!-- Headline -->
     <div class="reveal max-w-5xl">
-      <p class="ltr text-[var(--color-coral)] tracking-[0.35em] text-xs sm:text-sm uppercase mb-5 font-medium">
-        — Community since 2024
-      </p>
-      <h1 class="font-display font-black text-[var(--color-soft)] leading-[0.92] text-[clamp(3.5rem,11vw,9rem)] tracking-tight">
-        תל אביב.<br/>
-        <span class="text-[var(--color-coral)]">צעירים.</span><br/>
-        ביחד.
+      <h1 class="font-display text-[var(--color-soft)] leading-[0.95] text-[clamp(2.8rem,9vw,7.5rem)]">
+        תל אביב <span class="inline-block text-[var(--color-sunshine)]">גדולה.</span><br/>
+        הקהילה שלנו <span class="inline-block text-[var(--color-coral)] relative">קרובה.<svg viewBox="0 0 200 12" class="absolute -bottom-2 left-0 w-full h-3" preserveAspectRatio="none"><path d="M2 8 Q 50 2, 100 7 T 198 6" stroke="#FFC93C" stroke-width="4" fill="none" stroke-linecap="round"/></svg></span>
       </h1>
-      <p class="mt-7 text-[var(--color-soft)]/85 text-lg sm:text-xl max-w-xl leading-relaxed font-light">
-        מסיבות, מפגשים, ספורט וחברים חדשים. הקהילה הכי אנרגטית בעיר שלא נחה.
+      <p class="mt-8 text-[var(--color-soft)]/90 text-lg sm:text-2xl max-w-2xl leading-relaxed font-light">
+        מסיבות, יציאות, אימונים ופשוט חברים חדשים.
+        <span class="ltr font-bold">TLV YOUNG</span> — המקום שבו מכירים באמת בעיר שלא נחה.
       </p>
 
       <div class="mt-10 flex flex-wrap items-center gap-4">
@@ -45,23 +57,21 @@ const wa = "https://wa.me/972549899305?text=" + encodeURIComponent("היי, רא
           href={wa}
           target="_blank"
           rel="noopener"
-          class="btn-coral inline-flex items-center gap-3 px-8 py-4 text-base sm:text-lg font-medium rounded-full"
+          class="btn-pill btn-pill-lg"
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-          </svg>
-          הצטרפו לקהילה
+          <span>בואו להצטרף</span>
+          <span class="text-xl">👉</span>
         </a>
-        <a href="#about" class="text-[var(--color-soft)] text-sm tracking-widest uppercase opacity-80 hover:opacity-100 transition">
-          ↓ גלי עוד
+        <a href="#about" class="ltr text-[var(--color-soft)]/85 text-sm tracking-[0.2em] uppercase font-medium hover:text-[var(--color-sunshine)] transition">
+          ↓ Scroll
         </a>
       </div>
     </div>
 
-    <!-- Bottom row -->
+    <!-- Bottom -->
     <footer class="flex items-end justify-between text-[var(--color-soft)]/70">
-      <div class="ltr text-xs sm:text-sm tracking-widest">SCROLL</div>
-      <div class="font-poster text-5xl sm:text-7xl text-[var(--color-coral)] leading-none">01</div>
+      <div class="ltr text-[10px] sm:text-xs tracking-[0.3em] font-bold">★ EST. COMMUNITY</div>
+      <div class="hidden sm:block ltr text-xs tracking-[0.3em]">↘ DISCOVER</div>
     </footer>
   </div>
 </section>

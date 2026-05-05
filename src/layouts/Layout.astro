@@ -6,7 +6,7 @@ interface Props {
 }
 const {
   title = "TLV Young — הקהילה הצעירה של תל אביב",
-  description = "קהילה צעירה, חברתית ואנרגטית בלב תל אביב. מסיבות, מפגשים, ספורט ואירועי תוכן — עם אנשים בדיוק בראש שלכם.",
+  description = "תל אביב גדולה. הקהילה שלנו קרובה. מסיבות, יציאות, אימונים וחברים חדשים — TLV YOUNG, המקום שבו מכירים באמת בעיר שלא נחה.",
 } = Astro.props;
 ---
 <!doctype html>
@@ -20,21 +20,20 @@ const {
   <meta property="og:description" content={description} />
   <meta property="og:image" content="/images/IMG_0135.jpg" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#F4EFE6" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23FF4F3F'/></svg>" />
+  <meta name="theme-color" content="#FFF6E9" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23FF5841'/></svg>" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;900&family=Suez+One&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Rubik:wght@500;700;800;900&display=swap"
     rel="stylesheet"
   />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
-  <div id="cursor" class="cursor-dot" aria-hidden="true"></div>
 
-  <a href="#main" class="sr-only focus:not-sr-only fixed top-2 right-2 z-[10001] bg-[var(--color-ink)] text-[var(--color-soft)] px-4 py-2 rounded">
+  <a href="#main" class="sr-only focus:not-sr-only fixed top-2 right-2 z-[10001] bg-[var(--color-ink)] text-[var(--color-soft)] px-4 py-2 rounded-full">
     דלג לתוכן הראשי
   </a>
 
@@ -43,23 +42,6 @@ const {
   </main>
 
   <script>
-    // Custom cursor
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      const dot = document.getElementById("cursor");
-      if (dot) {
-        document.addEventListener("mousemove", (e) => {
-          dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-        });
-        document.addEventListener("mousedown", () => dot.style.transform += " scale(0.6)");
-        document.addEventListener("mouseup", () => {
-          dot.style.transform = dot.style.transform.replace(" scale(0.6)", "");
-        });
-      }
-    } else {
-      const dot = document.getElementById("cursor");
-      if (dot) dot.style.display = "none";
-    }
-
     // Reveal on scroll
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -68,9 +50,35 @@ const {
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    }, { threshold: 0.12, rootMargin: "0px 0px -80px 0px" });
+    document.querySelectorAll(".reveal, .reveal-scale, .reveal-rotate").forEach((el) => io.observe(el));
 
-    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    // Parallax + sticker rotation on scroll (rAF-throttled)
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduced) {
+      const parallaxEls = document.querySelectorAll<HTMLElement>("[data-parallax]");
+      const stickers = document.querySelectorAll<HTMLElement>("[data-sticker]");
+      let ticking = false;
+      const update = () => {
+        const y = window.scrollY;
+        parallaxEls.forEach((el) => {
+          const speed = parseFloat(el.dataset.parallax || "0.3");
+          el.style.transform = `translate3d(0, ${y * speed}px, 0)`;
+        });
+        stickers.forEach((el) => {
+          const speed = parseFloat(el.dataset.sticker || "0.06");
+          el.style.transform = `rotate(${y * speed}deg)`;
+        });
+        ticking = false;
+      };
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      }, { passive: true });
+      update();
+    }
   </script>
 </body>
 </html>

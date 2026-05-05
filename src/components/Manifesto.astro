@@ -1,27 +1,40 @@
 ---
+import Stickers from "./Stickers.astro";
 ---
-<section id="about" class="py-24 sm:py-36 px-6 sm:px-10 lg:px-14 bg-[var(--color-bg)]">
-  <div class="max-w-6xl mx-auto grid grid-cols-12 gap-6 sm:gap-10 items-start">
-    <!-- Big number -->
-    <div class="col-span-3 sm:col-span-2 reveal">
-      <div class="font-poster text-[var(--color-coral)] text-6xl sm:text-8xl leading-none">02</div>
-      <div class="mt-2 ltr text-[10px] sm:text-xs tracking-[0.3em] uppercase text-[var(--color-muted)]">Manifesto</div>
+<section id="about" class="py-24 sm:py-36 px-6 sm:px-10 lg:px-14 bg-[var(--color-bg)] relative overflow-hidden">
+  <!-- Background blob -->
+  <div class="absolute -top-20 -right-32 w-[500px] h-[500px] rounded-full bg-[var(--color-pink)]/60 blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 left-0 w-[400px] h-[400px] rounded-full bg-[var(--color-sunshine)]/20 blur-3xl pointer-events-none"></div>
+
+  <!-- Floating stickers -->
+  <div class="hidden md:block absolute top-20 left-[8%]" data-sticker="0.04">
+    <Stickers variant="sun" class="w-16 h-16 text-[var(--color-sunshine)]" />
+  </div>
+  <div class="hidden md:block absolute bottom-24 right-[6%]" data-sticker="-0.05">
+    <Stickers variant="star" class="w-12 h-12 text-[var(--color-coral)]" />
+  </div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="reveal text-center">
+      <span class="ltr inline-block bg-[var(--color-ink)] text-[var(--color-soft)] text-xs tracking-[0.3em] uppercase font-bold px-4 py-2 rounded-full mb-6">
+        ★ Who We Are
+      </span>
+      <h2 class="font-display text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-[var(--color-ink)]">
+        בלי פוזה, רק <span class="relative inline-block text-[var(--color-coral)]">אנשים טובים<svg viewBox="0 0 240 14" class="absolute -bottom-3 left-0 w-full h-4" preserveAspectRatio="none"><path d="M2 9 Q 60 2, 120 8 T 238 7" stroke="#FFC93C" stroke-width="5" fill="none" stroke-linecap="round"/></svg></span><br/>
+        שרוצים להנות ביחד.
+      </h2>
     </div>
 
-    <!-- Body -->
-    <div class="col-span-9 sm:col-span-10 reveal">
-      <p class="font-display text-2xl sm:text-4xl lg:text-5xl leading-[1.35] text-[var(--color-ink)] font-medium">
-        קהילה <em class="text-[var(--color-coral)] not-italic">צעירה</em>, חברתית
-        ואנרגטית בלב <span class="font-poster">תל אביב</span> —
-        המקום שבו מכירים אנשים חדשים, יוצאים לאירועים, מתאמנים יחד
-        ויוצרים <em class="text-[var(--color-coral)] not-italic">חיבורים אמיתיים</em>
-        בעיר שלא נחה.
+    <div class="reveal mt-12 sm:mt-16 max-w-3xl mx-auto space-y-6 text-lg sm:text-xl leading-[1.8] text-[var(--color-ink)]/85">
+      <p>
+        תל אביב יכולה להיות העיר הכי בודדה בעולם, אבל היא הכי כיפית כשיש עם מי לצאת אליה.
       </p>
-      <div class="mt-10 h-px bg-[var(--color-border)]"></div>
-      <p class="mt-6 text-[var(--color-muted)] text-base sm:text-lg leading-relaxed max-w-2xl">
-        אנחנו לא עוד קבוצת וואטסאפ. אנחנו קהילה שיוצאת לרחובות,
-        חוגגת על דאנס פלורים, מתאמנת על החוף ולומדת ביחד.
-        כי תל אביב הכי כיפית כשעושים אותה ביחד.
+      <p>
+        הקמנו את הקהילה הזאת כי נמאס לנו מקבוצות וואטסאפ שקטות ומאפליקציות. חיפשנו משהו אמיתי –
+        אנשים לצאת איתם לדרינק אחרי העבודה, חבר'ה לרוץ איתם בפארק בבוקר, ושותפים למסיבות בסופ"ש.
+      </p>
+      <p class="font-bold text-[var(--color-ink)]">
+        אם זה מה שגם אתם מחפשים, הגעתם למקום הנכון.
       </p>
     </div>
   </div>

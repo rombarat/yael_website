@@ -1,40 +1,54 @@
 ---
+import Stickers from "./Stickers.astro";
 const items = [
-  { num: "01", title: "מסיבות", desc: "ערבי יציאה, דאנס פלורים ומסיבות קונספט", img: "/images/IMG_2299.jpg" },
-  { num: "02", title: "מפגשים חברתיים", desc: "ארוחות, פגישות אחרי העבודה והיכרויות", img: "/images/IMG_3937.jpg" },
-  { num: "03", title: "ספורט", desc: "ריצות, יוגה, בוקר חוף ואימוני קבוצה", img: "/images/IMG_6383.jpg" },
-  { num: "04", title: "אירועי תוכן", desc: "הרצאות, סדנאות וערבי שיח", img: "/images/IMG_2388.jpg" },
+  { num: "01", title: "מסיבות וחיי לילה", desc: "מסיבות גג, דאנס פלורים שווים, יציאות מאורגנות ואווירה טובה.", img: "/images/IMG_6383.jpg", accent: "coral" },
+  { num: "02", title: "מפגשים ספונטניים", desc: "יושבים לבירה, ארוחות משותפות, דרינקים של אחרי העבודה – פשוט כדי להכיר.", img: "/images/IMG_3937.jpg", accent: "sunshine" },
+  { num: "03", title: "מזיעים ביחד", desc: "קבוצות ריצה, אימוני כוח בים ויוגה מול השקיעה.", img: "/images/IMG_2299.jpg", accent: "ocean" },
+  { num: "04", title: "דברים מעניינים", desc: "הרצאות על הבר, סדנאות וערבים שפותחים את הראש.", img: "/images/IMG_2388.jpg", accent: "pink" },
 ];
+const accentMap: Record<string, string> = {
+  coral: "var(--color-coral)",
+  sunshine: "var(--color-sunshine)",
+  ocean: "var(--color-ocean)",
+  pink: "var(--color-pink)",
+};
+const blobs = ["blob-1", "blob-2", "blob-3", "blob-1"];
 ---
-<section class="py-24 sm:py-36 px-6 sm:px-10 lg:px-14 bg-[var(--color-soft)]">
-  <div class="max-w-7xl mx-auto">
-    <header class="reveal mb-14 sm:mb-20 flex items-end justify-between gap-6 flex-wrap">
-      <div>
-        <div class="ltr text-[11px] tracking-[0.3em] uppercase text-[var(--color-coral)] font-medium mb-3">— What We Do</div>
-        <h2 class="font-display font-bold text-4xl sm:text-6xl lg:text-7xl leading-[1] text-[var(--color-ink)]">
-          ארבע דרכים<br/>להתחבר.
-        </h2>
-      </div>
-      <div class="font-poster text-[var(--color-coral)] text-5xl sm:text-7xl leading-none opacity-90">03</div>
+<section class="py-24 sm:py-36 px-6 sm:px-10 lg:px-14 bg-[var(--color-soft)] relative overflow-hidden">
+  <div class="hidden md:block absolute top-32 right-[4%]" data-sticker="0.04">
+    <Stickers variant="spark" class="w-16 h-16 text-[var(--color-coral)]" />
+  </div>
+
+  <div class="max-w-7xl mx-auto relative">
+    <header class="reveal mb-14 sm:mb-20 text-center">
+      <span class="ltr inline-block bg-[var(--color-sunshine)] text-[var(--color-ink)] text-xs tracking-[0.3em] uppercase font-bold px-4 py-2 rounded-full mb-5">
+        ★ What We Do
+      </span>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.1] text-[var(--color-ink)] max-w-3xl mx-auto">
+        אז מה עושים תכל'ס?<br/>
+        הנה <span class="text-[var(--color-coral)]">4 דברים</span> שאנחנו אוהבים:
+      </h2>
     </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-14 sm:gap-y-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16 sm:gap-y-24">
       {items.map((item, i) => (
-        <article class={`reveal ${i % 2 === 1 ? "md:mt-16" : ""}`}>
-          <div class="img-hover rounded-sm overflow-hidden bg-[var(--color-bg)] aspect-[4/5]">
+        <article class={`reveal ${i % 2 === 1 ? "md:mt-20" : ""}`}>
+          <div class={`relative img-card ${blobs[i]} aspect-[4/5] shadow-[0_30px_60px_-20px_rgba(31,20,16,0.25)]`}>
             <img
               src={item.img}
               alt={item.title}
               loading="lazy"
               class="w-full h-full object-cover"
             />
+            <span
+              class="absolute top-5 right-5 inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full font-display text-2xl sm:text-3xl tabular text-[var(--color-ink)] shadow-lg"
+              style={`background: ${accentMap[item.accent]}`}
+            >
+              {item.num}
+            </span>
           </div>
-          <div class="mt-5 flex items-baseline gap-4">
-            <span class="font-poster text-[var(--color-coral)] text-3xl sm:text-4xl tabular">{item.num}</span>
-            <span class="h-px flex-1 bg-[var(--color-border)] mb-2"></span>
-          </div>
-          <h3 class="mt-3 font-display font-bold text-3xl sm:text-4xl text-[var(--color-ink)]">{item.title}</h3>
-          <p class="mt-2 text-[var(--color-muted)] text-base sm:text-lg leading-relaxed">{item.desc}</p>
+          <h3 class="mt-6 font-display text-3xl sm:text-4xl text-[var(--color-ink)]">{item.title}</h3>
+          <p class="mt-3 text-[var(--color-muted)] text-base sm:text-lg leading-relaxed">{item.desc}</p>
         </article>
       ))}
     </div>

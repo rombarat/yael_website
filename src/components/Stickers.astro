@@ -1,0 +1,53 @@
+---
+// Reusable decorative SVG stickers. Use via <Sun />, <Star />, etc.
+// Each accepts class via slot wrapper or use directly.
+interface Props {
+  variant?: "sun" | "star" | "squiggle" | "spark" | "blob" | "smile";
+  class?: string;
+  color?: string;
+}
+const { variant = "sun", class: className = "", color = "currentColor" } = Astro.props;
+---
+{variant === "sun" && (
+  <svg class={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="50" cy="50" r="20" fill={color} />
+    <g stroke={color} stroke-width="6" stroke-linecap="round">
+      <line x1="50" y1="8" x2="50" y2="22" />
+      <line x1="50" y1="78" x2="50" y2="92" />
+      <line x1="8" y1="50" x2="22" y2="50" />
+      <line x1="78" y1="50" x2="92" y2="50" />
+      <line x1="20" y1="20" x2="30" y2="30" />
+      <line x1="70" y1="70" x2="80" y2="80" />
+      <line x1="80" y1="20" x2="70" y2="30" />
+      <line x1="30" y1="70" x2="20" y2="80" />
+    </g>
+  </svg>
+)}
+{variant === "star" && (
+  <svg class={className} viewBox="0 0 100 100" fill={color} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M50 5 L60 38 L95 40 L67 60 L78 92 L50 73 L22 92 L33 60 L5 40 L40 38 Z" />
+  </svg>
+)}
+{variant === "squiggle" && (
+  <svg class={className} viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M3 15 Q 18 0, 33 15 T 63 15 T 93 15 T 117 15" stroke={color} stroke-width="5" stroke-linecap="round" />
+  </svg>
+)}
+{variant === "spark" && (
+  <svg class={className} viewBox="0 0 100 100" fill={color} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M50 10 L55 45 L90 50 L55 55 L50 90 L45 55 L10 50 L45 45 Z" />
+  </svg>
+)}
+{variant === "blob" && (
+  <svg class={className} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path fill={color} d="M50 6 C 72 6 92 22 92 46 C 92 70 76 90 52 94 C 28 96 6 78 6 54 C 6 28 28 6 50 6 Z" />
+  </svg>
+)}
+{variant === "smile" && (
+  <svg class={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="50" cy="50" r="44" fill={color} />
+    <circle cx="36" cy="42" r="5" fill="#1F1410" />
+    <circle cx="64" cy="42" r="5" fill="#1F1410" />
+    <path d="M32 60 Q 50 78 68 60" stroke="#1F1410" stroke-width="5" stroke-linecap="round" fill="none" />
+  </svg>
+)}
