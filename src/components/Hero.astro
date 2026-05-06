@@ -2,7 +2,7 @@
 import Stickers from "./Stickers.astro";
 const wa = "https://wa.me/972549899305?text=" + encodeURIComponent("היי, ראיתי את האתר ואני רוצה להצטרף ל-TLV Young");
 // תמונת רקע: הלקוחה תחליף ידנית כאן
-const heroImg = "/images/IMG_6169.jpg";
+const heroImg = "/images/IMG_4702.jpg";
 ---
 <section class="relative min-h-screen w-full overflow-hidden bg-[var(--color-ink)]">
   <!-- BG image with parallax -->
@@ -23,8 +23,8 @@ const heroImg = "/images/IMG_6169.jpg";
   <!-- Floating stickers -->
   <Stickers variant="sun" class="sticker w-20 h-20 sm:w-28 sm:h-28 top-[12%] left-[6%] text-[var(--color-sunshine)] opacity-90" />
   <Stickers variant="star" class="sticker w-14 h-14 sm:w-20 sm:h-20 top-[22%] right-[8%] text-[var(--color-coral)] opacity-95" />
-  <Stickers variant="squiggle" class="sticker w-32 h-10 sm:w-44 sm:h-14 bottom-[18%] left-[10%] text-[var(--color-sunshine)]" />
-  <div class="sticker top-[60%] right-[15%]" data-sticker="0.05">
+  <Stickers variant="squiggle" class="hidden sm:block sticker w-32 h-10 sm:w-44 sm:h-14 bottom-[18%] left-[10%] text-[var(--color-sunshine)]" />
+  <div class="hidden sm:block sticker top-[60%] right-[15%]" data-sticker="0.05">
     <Stickers variant="spark" class="w-12 h-12 sm:w-16 sm:h-16 text-[var(--color-soft)] opacity-80" />
   </div>
 
