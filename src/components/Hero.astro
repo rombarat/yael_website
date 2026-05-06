@@ -1,11 +1,9 @@
 ---
 import Stickers from "./Stickers.astro";
 const wa = "https://wa.me/972549899305?text=" + encodeURIComponent("היי, ראיתי את האתר ואני רוצה להצטרף ל-TLV Young");
-// תמונת רקע: הלקוחה תחליף ידנית כאן
 const heroImg = "/images/IMG_4702.jpg";
 ---
 <section class="relative min-h-screen w-full overflow-hidden bg-[var(--color-ink)]">
-  <!-- BG image with parallax -->
   <div class="absolute inset-0 parallax-target" data-parallax="0.25">
     <img
       src={heroImg}
@@ -16,11 +14,9 @@ const heroImg = "/images/IMG_4702.jpg";
     />
   </div>
 
-  <!-- Color washes -->
   <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-coral)]/20 via-transparent to-[var(--color-ink)]/85"></div>
   <div class="absolute inset-0 bg-gradient-to-tr from-[var(--color-ocean)]/30 via-transparent to-[var(--color-sunshine)]/15"></div>
 
-  <!-- Floating stickers -->
   <Stickers variant="sun" class="sticker w-20 h-20 sm:w-28 sm:h-28 top-[12%] left-[6%] text-[var(--color-sunshine)] opacity-90" />
   <Stickers variant="star" class="sticker w-14 h-14 sm:w-20 sm:h-20 top-[22%] right-[8%] text-[var(--color-coral)] opacity-95" />
   <Stickers variant="squiggle" class="hidden sm:block sticker w-32 h-10 sm:w-44 sm:h-14 bottom-[18%] left-[10%] text-[var(--color-sunshine)]" />
@@ -28,26 +24,23 @@ const heroImg = "/images/IMG_4702.jpg";
     <Stickers variant="spark" class="w-12 h-12 sm:w-16 sm:h-16 text-[var(--color-soft)] opacity-80" />
   </div>
 
-  <!-- Content -->
   <div class="relative z-10 min-h-screen flex flex-col justify-between p-6 sm:p-10 lg:p-14">
-    <!-- Top bar -->
     <header class="flex items-start justify-between text-[var(--color-soft)]">
       <div class="ltr inline-flex items-center gap-2 bg-[var(--color-soft)]/10 backdrop-blur px-4 py-2 rounded-full text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold">
         <span class="w-2 h-2 rounded-full bg-[var(--color-coral)] animate-pulse"></span>
         TLV YOUNG
       </div>
       <div class="ltr text-[10px] sm:text-xs tracking-[0.3em] uppercase opacity-70 hidden sm:block">
-        Tel Aviv ·  Israel
+        Tel Aviv · Israel
       </div>
     </header>
 
-    <!-- Headline -->
     <div class="reveal max-w-5xl">
-      <h1 class="font-display text-[var(--color-soft)] leading-[0.95] text-[clamp(2.8rem,9vw,7.5rem)]">
-        תל אביב <span class="inline-block text-[var(--color-sunshine)]">גדולה.</span><br/>
-        הקהילה שלנו <span class="inline-block text-[var(--color-coral)] relative">קרובה.<svg viewBox="0 0 200 12" class="absolute -bottom-2 left-0 w-full h-3" preserveAspectRatio="n[...]
+      <h1 class="font-display text-[var(--color-soft)] leading-[1] text-[clamp(2.5rem,8.5vw,7rem)]">
+        <span class="block">תל אביב <span class="text-[var(--color-sunshine)]">גדולה</span>.</span>
+        <span class="block mt-2">הקהילה שלנו <span class="relative inline-block text-[var(--color-coral)]">קרובה<svg viewBox="0 0 200 12" class="absolute -bottom-2 right-0 w-full h-3" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q 50 2, 100 7 T 198 6" stroke="#FFC93C" stroke-width="4" fill="none" stroke-linecap="round"/></svg></span>.</span>
       </h1>
-      <p class="mt-8 text-[var(--color-soft)]/90 text-lg sm:text-2xl max-w-2xl leading-relaxed font-light">
+      <p class="mt-8 text-[var(--color-soft)]/90 text-base sm:text-xl lg:text-2xl max-w-2xl leading-relaxed font-light">
         מסיבות, יציאות, אימונים ופשוט חברים חדשים.
         <span class="ltr font-bold">TLV YOUNG</span> — המקום שבו מכירים באמת בעיר שלא נחה.
       </p>
@@ -68,7 +61,6 @@ const heroImg = "/images/IMG_4702.jpg";
       </div>
     </div>
 
-    <!-- Bottom -->
     <footer class="flex items-end justify-between text-[var(--color-soft)]/70">
       <div class="ltr text-[10px] sm:text-xs tracking-[0.3em] font-bold">★ EST. COMMUNITY</div>
       <div class="hidden sm:block ltr text-xs tracking-[0.3em]">↘ DISCOVER</div>
