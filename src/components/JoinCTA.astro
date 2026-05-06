@@ -1,5 +1,4 @@
 ---
-import Stickers from "./Stickers.astro";
 const wa = "https://wa.me/972549899305?text=" + encodeURIComponent("היי, ראיתי את האתר ואני רוצה להצטרף ל-TLV Young");
 const ig = "https://www.instagram.com/yael_pinchas_israel";
 const tel = "tel:+972549899305";
@@ -8,14 +7,6 @@ const tel = "tel:+972549899305";
   <!-- Decorative blobs -->
   <div class="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full bg-[var(--color-coral)]/25 blur-3xl pointer-events-none"></div>
   <div class="absolute -bottom-40 -right-32 w-[500px] h-[500px] rounded-full bg-[var(--color-sunshine)]/20 blur-3xl pointer-events-none"></div>
-
-  <!-- Stickers -->
-  <div class="absolute top-16 right-[10%]" data-sticker="0.08">
-    <Stickers variant="sun" class="w-20 h-20 sm:w-28 sm:h-28 text-[var(--color-sunshine)]" />
-  </div>
-  <div class="hidden md:block absolute bottom-20 left-[8%]" data-sticker="-0.06">
-    <Stickers variant="spark" class="w-14 h-14 text-[var(--color-coral)]" />
-  </div>
 
   <div class="max-w-4xl mx-auto relative z-10 text-center reveal">
     <span class="ltr inline-block bg-[var(--color-coral)] text-[var(--color-soft)] text-xs tracking-[0.3em] uppercase font-bold px-4 py-2 rounded-full mb-6">

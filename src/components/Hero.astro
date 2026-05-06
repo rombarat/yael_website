@@ -1,5 +1,4 @@
 ---
-import Stickers from "./Stickers.astro";
 const wa = "https://wa.me/972549899305?text=" + encodeURIComponent("היי, ראיתי את האתר ואני רוצה להצטרף ל-TLV Young");
 const heroImg = "/images/IMG_4702.jpg";
 ---
@@ -17,14 +16,7 @@ const heroImg = "/images/IMG_4702.jpg";
   <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-coral)]/20 via-transparent to-[var(--color-ink)]/85"></div>
   <div class="absolute inset-0 bg-gradient-to-tr from-[var(--color-ocean)]/30 via-transparent to-[var(--color-sunshine)]/15"></div>
 
-  <Stickers variant="sun" class="sticker w-20 h-20 sm:w-28 sm:h-28 top-[12%] left-[6%] text-[var(--color-sunshine)] opacity-90" />
-  <Stickers variant="star" class="sticker w-14 h-14 sm:w-20 sm:h-20 top-[22%] right-[8%] text-[var(--color-coral)] opacity-95" />
-  <Stickers variant="squiggle" class="hidden sm:block sticker w-32 h-10 sm:w-44 sm:h-14 bottom-[18%] left-[10%] text-[var(--color-sunshine)]" />
-  <div class="hidden sm:block sticker top-[60%] right-[15%]" data-sticker="0.05">
-    <Stickers variant="spark" class="w-12 h-12 sm:w-16 sm:h-16 text-[var(--color-soft)] opacity-80" />
-  </div>
-
-  <div class="relative z-10 min-h-screen flex flex-col justify-between p-6 sm:p-10 lg:p-14">
+<div class="relative z-10 min-h-screen flex flex-col justify-between p-6 sm:p-10 lg:p-14">
     <header class="flex items-start justify-between text-[var(--color-soft)]">
       <div class="ltr inline-flex items-center gap-2 bg-[var(--color-soft)]/10 backdrop-blur px-4 py-2 rounded-full text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold">
         <span class="w-2 h-2 rounded-full bg-[var(--color-coral)] animate-pulse"></span>

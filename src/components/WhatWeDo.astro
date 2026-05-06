@@ -1,5 +1,4 @@
 ---
-import Stickers from "./Stickers.astro";
 const items = [
   { num: "01", title: "מסיבות וחיי לילה", desc: "מסיבות גג, דאנס פלורים שווים, יציאות מאורגנות ואווירה טובה.", img: "/images/IMG_6383.jpg", accent: "coral" },
   { num: "02", title: "מפגשים ספונטניים", desc: "יושבים לבירה, ארוחות משותפות, דרינקים של אחרי העבודה – פשוט כדי להכיר.", img: "/images/IMG_3937.jpg", accent: "sunshine" },
@@ -15,10 +14,6 @@ const accentMap: Record<string, string> = {
 const blobs = ["blob-1", "blob-2", "blob-3", "blob-1"];
 ---
 <section class="py-24 sm:py-36 px-6 sm:px-10 lg:px-14 bg-[var(--color-soft)] relative overflow-hidden">
-  <div class="hidden md:block absolute top-32 right-[4%]" data-sticker="0.04">
-    <Stickers variant="spark" class="w-16 h-16 text-[var(--color-coral)]" />
-  </div>
-
   <div class="max-w-7xl mx-auto relative">
     <header class="reveal mb-14 sm:mb-20 text-center">
       <span class="ltr inline-block bg-[var(--color-sunshine)] text-[var(--color-ink)] text-xs tracking-[0.3em] uppercase font-bold px-4 py-2 rounded-full mb-5">

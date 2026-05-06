@@ -1,5 +1,4 @@
 ---
-import Stickers from "./Stickers.astro";
 const photos = [
   "/images/IMG_2885.jpg",
   "/images/IMG_2960.jpg",
@@ -15,10 +14,6 @@ const heights = ["aspect-[3/4]", "aspect-[4/5]", "aspect-square", "aspect-[4/5]"
 const tilts = [-1, 1, -0.5, 1, -1, 0.5, -1, 1, -0.5];
 ---
 <section class="py-24 sm:py-36 px-6 sm:px-10 lg:px-14 bg-[var(--color-bg)] relative overflow-hidden">
-  <div class="hidden md:block absolute top-20 left-[5%]" data-sticker="0.05">
-    <Stickers variant="sun" class="w-20 h-20 text-[var(--color-sunshine)]" />
-  </div>
-
   <div class="max-w-7xl mx-auto relative">
     <header class="reveal mb-14 sm:mb-20 text-center">
       <span class="ltr inline-block bg-[var(--color-coral)] text-[var(--color-soft)] text-xs tracking-[0.3em] uppercase font-bold px-4 py-2 rounded-full mb-5">
