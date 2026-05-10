@@ -29,8 +29,10 @@
     <div class="col-span-12 lg:col-span-8 reveal-scale order-2">
       <div class="relative rounded-[32px] overflow-hidden shadow-[0_40px_80px_-20px_rgba(31,20,16,0.4)] bg-[var(--color-ink)]">
         <video
+          id="yael-video"
           src="/images/video.mp4"
           controls
+          muted
           playsinline
           preload="metadata"
           poster="/images/IMG_4498.jpg"
@@ -45,3 +47,23 @@
     </div>
   </div>
 </section>
+
+<script>
+  const v = document.getElementById("yael-video") as HTMLVideoElement | null;
+  if (v) {
+    let userPaused = false;
+    v.addEventListener("pause", () => { if (!v.ended) userPaused = true; });
+    v.addEventListener("play", () => { userPaused = false; });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+          if (!userPaused && v.paused) v.play().catch(() => {});
+        } else {
+          if (!v.paused) v.pause();
+        }
+      });
+    }, { threshold: [0, 0.5, 1] });
+    io.observe(v);
+  }
+</script>
